@@ -1,0 +1,6 @@
+label_colors:
+    color_1: [0, 0, 0]              # chair
+    color_2: [0, 0, 255]            # tv
+    color_3: [125, 125, 0]            # table
+    color_4: [255, 0, 0]            # walls
+    color_5: [0,125,125]   # maze

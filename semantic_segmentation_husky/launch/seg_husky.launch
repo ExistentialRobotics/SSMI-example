@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="package_path" default="$(find semantic_segmentation_husky)"/>
+    <arg name="models_path" default="$(arg package_path)/sdf"/>
+    <env name="IGN_GAZEBO_RESOURCE_PATH" value="$(arg models_path):$(optenv IGN_GAZEBO_RESOURCE_PATH '')"/>
+
+    <include file="$(find ros_ign_gazebo)/launch/ign_gazebo.launch">
+        <arg name="ign_args" value="-r -v 1 $(find semantic_segmentation_husky)/sdf/world.sdf"/>
+    </include>
+
+
+    <node pkg="ros_ign_bridge" type="parameter_bridge" name="$(anon ros_ign_bridge)" output="screen" args="
+                /rgbd_camera/camera_info@sensor_msgs/CameraInfo@ignition.msgs.CameraInfo
+                /rgbd_camera/image@sensor_msgs/Image@ignition.msgs.Image 
+                /rgbd_camera/depth_image@sensor_msgs/Image@ignition.msgs.Image
+                
+                /model/husky_seg_cam/pose@geometry_msgs/PoseStamped@ignition.msgs.Pose
+                /model/husky_seg_cam/cmd_vel@geometry_msgs/Twist@ignition.msgs.Twist
+                /world/semantic_segmentation_world/model/husky_seg_cam/joint_state@sensor_msgs/JointState@ignition.msgs.Model
+                /model/husky_seg_cam/tf@tf2_msgs/TFMessage@ignition.msgs.Pose_V
+
+
+
+                /semantic/colored_map@sensor_msgs/Image@ignition.msgs.Image
+                /semantic/labels_map@sensor_msgs/Image@ignition.msgs.Image
+                "/>
+
+                
+                
+
+                <!-- /model/husky_seg_cam/pose@geometry_msgs/PoseArray@ignition.msgs.Pose_V -->
+
+    <!-- <rosparam file="$(find semantic_segmentation_husky)/config/label_colors_husky.yaml" command="load"/> -->
+
+    
+
+   <node name="dynamic_tf_broadcaster" pkg="semantic_segmentation_husky" type="dynamic_tf.py" output="screen">
+    </node>
+
+    
+
+    <node type="rviz" name="rviz" pkg="rviz" args="-d $(find semantic_segmentation_husky)/rviz/octomap_cam.rviz"/>
+    
+    <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="husky_keyboard"  output="screen">
+        <remap from="cmd_vel" to="/model/husky_seg_cam/cmd_vel"/>
+    </node>
+
+</launch>
