@@ -1,18 +1,9 @@
-# SOLAR
-This is a developing branch, please check main branch for more information.
+
 
 ## TODO:
 1. Set stactic transformation in launch file.
 2. Add SSMI-Planning
-3. Add multi robots in Gazebo.
-4. Add ROAM
-
-
-
-## Changes
-1. Use latest SSMI with little changes in code.
-2. Set environment variable through launch file.
-3. Remove python install
+3. Use submodules instead of hard copies
 
 
 
