@@ -1,14 +1,27 @@
 
 
 ## TODO:
-1. Set stactic transformation in launch file.
-2. Add SSMI-Planning
-3. Use submodules instead of hard copies
+Add lower level controler for planning
+
+Use submodules instead of hard copies
+
+Set stactic transformation in launch file
 
 
 
 
 
+### Before running
+1. use catkin build instead of catkin_make
+2. give permission to all python files
+
+```
+cd ~/catkin_ws 
+catkin clean
+cd ~/catkin_ws/src/SSMI-example
+chmod +x ./**/*.py
+catkin build
+```
 
 
 ### Run the rosnodes

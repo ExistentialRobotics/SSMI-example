@@ -19,8 +19,6 @@
                 /world/semantic_segmentation_world/model/husky_seg_cam/joint_state@sensor_msgs/JointState@ignition.msgs.Model
                 /model/husky_seg_cam/tf@tf2_msgs/TFMessage@ignition.msgs.Pose_V
 
-
-
                 /semantic/colored_map@sensor_msgs/Image@ignition.msgs.Image
                 /semantic/labels_map@sensor_msgs/Image@ignition.msgs.Image
                 "/>

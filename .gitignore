@@ -1,0 +1,4 @@
+.vscode/
+.catkin_tools/
+*.so
+**/__pycache__/
