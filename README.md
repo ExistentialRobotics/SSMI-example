@@ -13,13 +13,13 @@ Set stactic transformation in launch file
 
 ### Before running
 1. use catkin build instead of catkin_make
-2. give permission to all python files
+2. give permission to all python scripts
 
 ```
 cd ~/catkin_ws 
 catkin clean
 cd ~/catkin_ws/src/SSMI-example
-chmod +x ./**/*.py
+find . -name "*.py" -exec chmod +x {} \;
 catkin build
 ```
 
@@ -28,7 +28,6 @@ catkin build
 1. Terminal 1: build and launch the simulation node
 ```
 cd ~/catkin_ws
-catkin build
 source ./devel/setup.bash
 roslaunch semantic_segmentation_husky seg_husky.launch
 ```
@@ -36,6 +35,11 @@ roslaunch semantic_segmentation_husky seg_husky.launch
 2. Terminal 2: launch the semantic octomap node
 ```
 roslaunch semantic_octomap semantic_octomap.launch
+```
+
+3. Terminal 3: launch planner
+```
+roslaunch semantic_info_gathering run_semantic_exploration.launch
 ```
 
  <div style="display: flex; justify-content: center;">
