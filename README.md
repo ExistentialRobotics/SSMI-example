@@ -3,12 +3,6 @@
 ## TODO:
 Add lower level controler for planning
 
-Use submodules instead of hard copies
-
-Set stactic transformation in launch file
-
-
-
 
 
 ### Before running
@@ -41,6 +35,13 @@ roslaunch semantic_octomap semantic_octomap.launch
 ```
 roslaunch semantic_info_gathering run_semantic_exploration.launch
 ```
+
+### TF
+1. World frame: /world
+2. Robot body frame: /semantic_segmentation_world
+3. Camera Optical frame: /camera_optic
+
+
 
  <div style="display: flex; justify-content: center;">
   <img src="gifs/sim1.gif" width="400" alt="Tracking 1" style="margin-right: 20px;">
