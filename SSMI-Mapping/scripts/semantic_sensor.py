@@ -70,16 +70,12 @@ class SemanticPclGenerator:
         bgr_img = bgr_img.view('<u1')
         depth_img = depth_img.view('<f4')
         # Add depth information
-        o_R_r = np.matrix([[0, -1, 0],
-            [0, 0, -1],
-            [1, 0, 0]])
         # self.xyd_vect[:,0:2] = self.xy_index * depth_img.reshape(-1,1) / 1000 # Division by 1000 for unit conversion
         # self.xyd_vect[:,2:3] = depth_img.reshape(-1,1) / 1000 # Division by 1000 for unit conversion
-        # NOTE: No longer necessary, reason unclear yet
+        # NOTE: Our input is in meters, so we don't need to divide by 1000
         self.xyd_vect[:,0:2] = self.xy_index * depth_img.reshape(-1,1) / 1
         self.xyd_vect[:,2:3] = depth_img.reshape(-1,1) / 1
         self.XYZ_vect = self.xyd_vect.dot(self.intrinsic.I.T)
-        self.XYZ_vect = self.XYZ_vect.dot(o_R_r.I.T)
         # Convert to ROS point cloud message in a vectorialized manner
         # ros msg data: [x,y,z,0,bgr0,semantic_color] (little endian float32)
         # Transform color
