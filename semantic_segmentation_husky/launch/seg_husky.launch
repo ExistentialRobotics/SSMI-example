@@ -5,7 +5,7 @@
     <env name="IGN_GAZEBO_RESOURCE_PATH" value="$(arg models_path):$(optenv IGN_GAZEBO_RESOURCE_PATH '')"/>
 
     <include file="$(find ros_ign_gazebo)/launch/ign_gazebo.launch">
-        <arg name="ign_args" value="-r -v 1 $(find semantic_segmentation_husky)/sdf/world.sdf"/>
+        <arg name="ign_args" value="-r -v 1 $(find semantic_segmentation_husky)/sdf/world.sdf --headles-rendering"/>
     </include>
 
 

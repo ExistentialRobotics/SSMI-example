@@ -1,7 +1,6 @@
 
 
 ## TODO:
-Add lower level controler for planning
 
 Use submodules instead of hard copies
 
