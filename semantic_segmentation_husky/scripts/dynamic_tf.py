@@ -17,8 +17,7 @@ def pose_callback(pose_stamped):
 
     transform.header.stamp = pose_stamped.header.stamp
     transform.header.frame_id = 'world'
-    transform.child_frame_id = 'semantic_segmentation_world'
-    # transform.child_frame_id = 'husky/base'
+    transform.child_frame_id = 'base_link'
 
     # Set the pose information on the transform
     transform.transform.translation.x = pose_stamped.pose.position.x

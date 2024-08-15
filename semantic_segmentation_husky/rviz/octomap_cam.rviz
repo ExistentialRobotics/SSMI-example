@@ -8,7 +8,9 @@ Panels:
         - /Status1
         - /ColorOccupancyGrid1
         - /TF1
-        - /Map1
+        - /TF1/Tree1
+        - /TF1/Tree1/world1
+        - /TF1/Tree1/world1/semantic_segmentation_world1
         - /Image1
       Splitter Ratio: 0.5
     Tree Height: 457
@@ -29,7 +31,7 @@ Panels:
   - Class: rviz/Time
     Name: Time
     SyncMode: 0
-    SyncSource: ""
+    SyncSource: Image
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -69,11 +71,15 @@ Visualization Manager:
       Voxel Rendering: Occupied Voxels
     - Class: rviz/TF
       Enabled: true
-      Filter (blacklist): ""
+      Filter (blacklist): camera_optic
       Filter (whitelist): ""
       Frame Timeout: 15
       Frames:
         All Enabled: true
+        semantic_segmentation_world:
+          Value: true
+        world:
+          Value: true
       Marker Alpha: 1
       Marker Scale: 5
       Name: TF
@@ -81,7 +87,9 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        {}
+        world:
+          semantic_segmentation_world:
+            {}
       Update Interval: 0
       Value: true
     - Alpha: 0.699999988079071
@@ -96,7 +104,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Image
       Enabled: true
-      Image Topic: /image_dets
+      Image Topic: /rgbd_camera/image
       Max Value: 1
       Median window: 5
       Min Value: 0
@@ -134,7 +142,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 38.09220504760742
+      Distance: 21.556068420410156
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -142,17 +150,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 0
-        Y: 0
-        Z: 0
+        X: 1.141642689704895
+        Y: 3.8319242000579834
+        Z: -0.1636207550764084
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.5297963619232178
+      Pitch: 0.49479737877845764
       Target Frame: <Fixed Frame>
-      Yaw: 3.0704445838928223
+      Yaw: 3.560448169708252
     Saved: ~
 Window Geometry:
   Displays:
