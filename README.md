@@ -1,28 +1,25 @@
 
 
-## TODO:
-Add lower level controler for planning
+### TODO:
+1. How do we include car_control?
+2. Scripts to launch everything?
 
+### Requirements
+1. Ubuntu 20.04 and ROS Noetic
+2. Gazebo Fortress
 
-
-### Before running
-1. use catkin build instead of catkin_make
-2. give permission to all python scripts
-
+### Build the workspace
 ```
-cd ~/catkin_ws 
+cd catkin_ws/src
+git clone --recursive git@github.com:ExistentialRobotics/SSMI.git
 catkin clean
-cd ~/catkin_ws/src/SSMI-example
-find . -name "*.py" -exec chmod +x {} \;
 catkin build
 ```
 
-
 ### Run the rosnodes
-1. Terminal 1: build and launch the simulation node
+Please source the workspace before running the nodes
+1. Terminal 1: launch the simulation node
 ```
-cd ~/catkin_ws
-source ./devel/setup.bash
 roslaunch semantic_segmentation_husky seg_husky.launch
 ```
 
@@ -36,9 +33,13 @@ roslaunch semantic_octomap semantic_octomap.launch
 roslaunch semantic_info_gathering run_semantic_exploration.launch
 ```
 
+4. Terminal 4: launch the controller
+```
+roslaunch semantic_segmentation_husky jackal_pd.launch
+```
 ### TF
 1. World frame: /world
-2. Robot body frame: /semantic_segmentation_world
+2. Robot body frame: /base_link
 3. Camera Optical frame: /camera_optic
 
 
