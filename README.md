@@ -1,9 +1,3 @@
-
-
-### TODO:
-1. How do we include car_control?
-2. Scripts to launch everything?
-
 ### Requirements
 1. Ubuntu 20.04 and ROS Noetic
 2. Gazebo Fortress
@@ -11,7 +5,7 @@
 ### Build the workspace
 ```
 cd catkin_ws/src
-git clone --recursive git@github.com:ExistentialRobotics/SSMI.git
+git clone --recursive git@github.com:ExistentialRobotics/SSMI-example.git
 catkin clean
 catkin build
 ```
