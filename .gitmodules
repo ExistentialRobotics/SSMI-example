@@ -2,6 +2,10 @@
 	path = SSMI
 	url = git@github.com:ExistentialRobotics/SSMI.git
 	# branch = main
+[submodule "car_control"]
+	path = car_control
+	url = git@github.com:ExistentialRobotics/car_control.git
+	# branch = main
 [submodule "ros_gz"]
 	path = ros_gz
 	url = git@github.com:gazebosim/ros_gz.git
