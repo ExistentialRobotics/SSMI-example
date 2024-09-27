@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-15"?>
+<launch>
+    
+    <!-- rviz args -->
+    <arg name="rviz" default="false"/>
+    
+    <!-- <rosparam file="$(find car_control)/config/dd_gains.yaml" command="load"/> -->
+    
+    <node name="power_diagram_control_node" pkg="car_control" type="power_diagram_node" output="screen">
+        <!-- remap topics  -->
+        <!-- goal_pos: /planner/position_cmd -->
+        <!-- ~odom if using nav_msgs::Odometry -->
+        <!-- ~pose if using geometry_msgs::PoseStamped-->
+        <!-- ~position_cmd of type geometry_msgs::PoseStamped-->
+        <rosparam file="$(find car_control)/config/power_diagram_gains.yaml" command="load"/>
+        <remap from="/power_diagram_control_node/position_cmd" to="/planner/position_cmd"/>
+        <remap from="/power_diagram_control_node/commands" to="/model/husky_seg_cam/cmd_vel" />
+        <remap from="/power_diagram_control_node/pose" to="/model/husky_seg_cam/pose"/> 
+    </node>
+    
+
+    <!-- output is ~commands of type geometry_msgs::Twist-->
+</launch>

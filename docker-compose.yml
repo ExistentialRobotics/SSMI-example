@@ -1,0 +1,26 @@
+services:
+  ssmi_demo:
+    build: .
+    container_name: ssmi_demo
+    command: bash -c  "cd /root/ssmi_ws/scripts && ./launch_ssmi_example.sh"
+    # command: sh
+    entrypoint: /ros_entrypoint.sh
+    runtime: nvidia
+    environment:
+      - DISPLAY
+      - QT_X11_NO_MITSHM=1
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    network_mode: host
+    privileged: true
+    stdin_open: true 
+    tty: true
+    shm_size: '8gb'
+    deploy:
+        resources:
+            limits:
+                cpus: '8.0'
+
+# If you need visualization, make sure to run `xhost +local:docker` first.
