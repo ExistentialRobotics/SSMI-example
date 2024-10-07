@@ -43,7 +43,10 @@ RUN pip3 install scikit-image
 RUN echo "source /opt/ros/noetic/setup.bash" >> /root/.bashrc && \
     /bin/bash -c "source /opt/ros/noetic/setup.bash && \
     cd /root/ssmi_ws && \
-    catkin build"
+    catkin build || true && \
+    source devel/setup.bash && \
+    catkin build && \ 
+    source devel/setup.bash"
 
 RUN echo "source /root/ssmi_ws/devel/setup.bash" >> /root/.bashrc
 
