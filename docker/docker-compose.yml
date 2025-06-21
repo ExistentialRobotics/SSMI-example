@@ -1,0 +1,23 @@
+services:
+  ssmi_ros2:
+    build: .
+    container_name: ssmi
+      #command: bash -c  "source ~/catkin_ws/devel/setup.bash && roslaunch multi_sim_init semantic_init_multi.launch"
+    # command: sh
+    entrypoint: /ros_entrypoint.sh
+    runtime: nvidia
+    environment:
+      - DISPLAY
+      - QT_X11_NO_MITSHM=1
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ~/SSMI:/root/colcon_ws/src/
+      - ~/.ssh:/root/.ssh:ro
+    network_mode: host
+    privileged: true
+    stdin_open: true 
+    tty: true
+
+# If you need visualization, make sure to excute `xhost +local:docker` in CLI
